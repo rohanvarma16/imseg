@@ -9,30 +9,35 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <vector> 
+#include <omp.h>
 
 using namespace cv;
 using namespace std;
 
-void segmentTree(cv::Mat& img_or, std::vector<int>& parents, std::vector<float>& distances,std::vector<float>& pdensity,int furthest_nbr ){
-
-// convert image to float:
-cv::Mat img;
-img_or.convertTo(img, CV_32FC1); 
-
-int top_i, top_j;
-float nbr_pdensity;
-float my_pdensity;
-int my_parent;
-float xy_dist;
-int counter = 0;
+void segmentTree(cv::Mat& img_or, std::vector<int>& parents, 
+                 std::vector<float>& distances,std::vector<float>& pdensity,
+                 int furthest_nbr )
+{
+  // convert image to float:
+  cv::Mat img;
+  img_or.convertTo(img, CV_32FC1); 
+  
+  #pragma omp parallel for\
+  shared(img, parents, distances, pdensity)  
   for(int i = 0 ; i < img.rows; i++){
     for(int j = 0 ; j < img.cols ; j++){
+  
+      int top_i, top_j;
+      float nbr_pdensity;
+      float my_pdensity;
+      int my_parent;
+      float xy_dist;
 
       int width = (2 * furthest_nbr) + 1;
       int height = (2 * furthest_nbr) + 1;
       // create rectangle (square) around pixel of side length (2*furthest_nbr) centered
       // pixel (i,j):
-     // printf("i: %d, j: %d \n",i,j);
+      // printf("i: %d, j: %d \n",i,j);
       top_i = max(0,i-furthest_nbr);
       top_j = max(0,j-furthest_nbr);
 
@@ -50,7 +55,6 @@ int counter = 0;
       cv::Mat nbr;
       nbr_or.convertTo(nbr,CV_32FC1);
 
-
       float min_dist = 10000000;
       my_pdensity = pdensity[i * img.cols + j];
       my_parent = i * img.cols + j;
@@ -67,17 +71,12 @@ int counter = 0;
           xy_dist = (float) (abs(i_nbr - abs(i-top_i)) + abs(j_nbr - abs(j - top_j)));
           
           if(i== nbr_row && j == nbr_col){
-          	counter++;
           	continue;
           }
 
           if( nbr_pdensity > my_pdensity && xy_dist < min_dist ){
           	min_dist = xy_dist;
           
-
-          	if(nbr_row >= img.rows || nbr_col >= img.cols){
-          		printf("top_i: %d, top_j: %d, i_nbr: %d, j_nbr: %d,nbr_row:%d,nbr_col:%d, height: %d, width: %d \n ",top_i,top_j,i_nbr,j_nbr, nbr_row,nbr_col,height,width);
-          	}
           	my_parent = nbr_ind;
           }
         }
@@ -85,39 +84,82 @@ int counter = 0;
         parents[i * img.cols + j] = my_parent;
     }
   }
-  printf("counter: %d \n",counter);
 }
 
 
 
 
-void constructSegments(cv::Mat &img, std::vector<int>& parents, std::vector<float>&distances){
+void constructSegments(cv::Mat &img, std::vector<int>& parents, 
+                       std::vector<float>&distances){
 
-int num_pts = img.cols * img.rows;
+  int num_pts = img.cols * img.rows;
 
-  int delta;
+  int *deltas, delta;
+  int start = 1;
   int done = 0;
   int treedepth= 0;
+  int num_threads;
 
+  std::vector<int> parents_temp(parents.size());
 
+  std::vector<int> &parents_old = parents;
+  std::vector<int> &parents_new = parents_temp;
+  
   while(! done)
-    { delta =0;
+  { 
+      delta =0;
 
-      for(int i =0 ; i< num_pts ; i++){
+      #pragma omp parallel\
+      shared(img, parents_old, parents_new, num_threads, start, deltas, delta)
+      {
+        int tid = omp_get_thread_num();
+        
+        if(tid == 0){
+          // First iteration
+          if(start){
+            num_threads = omp_get_num_threads();
+            deltas = new int[num_threads];
+            start = 0;
+          }
+          memset(deltas, 0, sizeof(int)*num_threads);
+        }
 
-        if(parents[parents[i]] != parents[i]){
-          parents[i] = parents[parents[i]];
-          delta++;
+        #pragma omp barrier
+
+        #pragma omp for
+        for(int i = 0 ; i < num_pts ; i++){
+          if(parents_old[parents_old[i]] != parents_old[i]){
+            parents_new[i] = parents_old[parents_old[i]];
+            deltas[tid]++;
+          }
+          else
+          {
+            parents_new[i] = parents_old[i];
+          }
+        }
+
+        #pragma omp for reduction(+:delta)
+        for(int thr_iter = 0; thr_iter < num_threads; thr_iter++)
+        {
+          delta += deltas[thr_iter];
         }
       }
+
       if(delta == 0){
         done = 1;
       }
+
       treedepth++;
+      
+      // Switch
+      parents_old = (parents_old == parents) ? parents_temp : parents;
+      parents_new = (parents_new == parents) ? parents_temp : parents;
     }
     printf("treedepth: %d \n",treedepth);
 
-  }
+    if(parents_new == parents_temp)
+    std::copy(parents.begin(), parents.end(), parents_temp.begin());
+}
 
 
 

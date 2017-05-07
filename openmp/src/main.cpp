@@ -14,6 +14,8 @@
 #include <iostream>
 #include <unistd.h>
 #include <omp.h>
+#include "../include/cycleTimer.h"
+
 using namespace cv;
 using namespace std;
 void showhelpinfo(char *s)
@@ -27,27 +29,6 @@ void showhelpinfo(char *s)
 
 int main(int argc, char** argv )
 {
-
-  int nthreads, tid;
-
-  /* Fork a team of threads giving them their own copies of variables */
-#pragma omp parallel private(nthreads, tid)
-  {
-
-    /* Obtain thread number */
-    tid = omp_get_thread_num();
-    printf("Hello World from thread = %d\n", tid);
-
-    /* Only master thread does this */
-    if (tid == 0) 
-      {
-	nthreads = omp_get_num_threads();
-	printf("Number of threads = %d\n", nthreads);
-      }
-
-  } /* All threads join master thread and disband */
-
-
   // top level parameters:
 
   //default:
@@ -91,53 +72,78 @@ int main(int argc, char** argv )
     }
   }
 
-cv::Mat img = cv::imread(imgpath,CV_LOAD_IMAGE_COLOR);
+  double readTime = 0.f;
+  double pdensityTime = 0.f;
+  double segmentTime = 0.f;
+  double writeTime = 0.f;
+  double totalTime = 0.f;
+
+  double startTime = CycleTimer::currentSeconds();
+
+  cv::Mat img = cv::imread(imgpath,CV_LOAD_IMAGE_COLOR);
     if(! img.data )                              // Check for invalid input
     {
         std::cout <<  "Could not open or find the image" << std::endl ;
         return -1;
     }
 
-printf("img rows: %d, img cols: %d\n",img.rows,img.cols);
+  printf("img rows: %d, img cols: %d\n",img.rows,img.cols);
 
+  double endReadTime = CycleTimer::currentSeconds();
 
-/************** STEP 1: COMPUTE P_DENSITY ****************/
+  /************** STEP 1: COMPUTE P_DENSITY ****************/
 
-std::vector<float> pdensity(img.rows * img.cols , 0.0);
+  std::vector<float> pdensity(img.rows * img.cols , 0.0);
 
-float sigma = ((float) furthest_nbr)/3.f;
-float lambda = 0.01;
-compute_pdensity(img,pdensity,sigma,furthest_nbr,lambda);
-printf("computed density\n");
+  float sigma = ((float) furthest_nbr)/3.f;
+  float lambda = 0.01;
+  compute_pdensity(img,pdensity,sigma,furthest_nbr,lambda);
+  printf("computed density\n");
 
+  double endPdensityTime = CycleTimer::currentSeconds();
 
-/************** STEP 2: COMPUTE PARENTS ****************/
+  /************** STEP 2: COMPUTE PARENTS ****************/
 
-std::vector<int> parents(img.rows * img.cols);
-std::vector<float> distances(img.rows * img.cols , 0.0);
+  std::vector<int> parents(img.rows * img.cols);
+  std::vector<float> distances(img.rows * img.cols , 0.0);
 
-segmentTree(img, parents, distances, pdensity, tau);
-printf("found parents\n");
+  segmentTree(img, parents, distances, pdensity, tau);
+  printf("found parents\n");
 
-constructSegments(img,parents,distances);
-printf("constructed segments, ");
-//printf("num_segments: %d \n", distinct_abs(parents));
+  constructSegments(img,parents,distances);
+  printf("constructed segments, ");
+  //printf("num_segments: %d \n", distinct_abs(parents));
 
+  double endSegmentTime = CycleTimer::currentSeconds();
 
-/************** STEP 3: VISUALIZE SEGMENTS **************/
+  /************** STEP 3: VISUALIZE SEGMENTS **************/
 
-cv::Mat img_seg = img.clone();
-constructSegmentedImg(img,img_seg, parents);
+  cv::Mat img_seg = img.clone();
+  constructSegmentedImg(img,img_seg, parents);
+
+  double endWriteTime = CycleTimer::currentSeconds();
+
+  readTime = 1000.f * (endReadTime - startTime);  
+  pdensityTime = 1000.f * (endPdensityTime - endReadTime);
+  segmentTime = 1000.f * (endSegmentTime - endPdensityTime);
+  writeTime = 1000.f * (endWriteTime - endSegmentTime);
+  totalTime = 1000.f * (endWriteTime - startTime);
  
-// Create big mat for window
-cv::Mat win_mat(cv::Size(2 * img.cols , img.rows), CV_8UC3);
+  printf("Time for reading input image file:      %.4f ms\n", readTime);
+  printf("Time for calculating point densities:   %.4f ms\n", pdensityTime);
+  printf("Time for segmenting the image:          %.4f ms\n", segmentTime);
+  printf("Time for writing the output image:      %.4f ms\n", writeTime);
+  printf("Overall time:                           %.4f ms\n", totalTime);
+
+  // Create big mat for window
+  cv::Mat win_mat(cv::Size(2 * img.cols , img.rows), CV_8UC3);
  
-// Copy small images into big mat
-img.copyTo(win_mat(cv::Rect(  0, 0, img.cols, img.rows)));
-img_seg.copyTo(win_mat(cv::Rect(img.cols, 0, img.cols, img.rows)));
+  // Copy small images into big mat
+  img.copyTo(win_mat(cv::Rect(  0, 0, img.cols, img.rows)));
+  img_seg.copyTo(win_mat(cv::Rect(img.cols, 0, img.cols, img.rows)));
  
-// Display big mat
-cv::imshow("Original and Segmented", win_mat);
+  // Display big mat
+  cv::imshow("Original and Segmented", win_mat);
   waitKey(0); 
 
   return 0;

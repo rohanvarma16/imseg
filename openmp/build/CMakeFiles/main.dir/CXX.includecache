@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/openmp/src/../include/pdensity.h
-
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/openmp/src/../include/segmentation.h
-
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/openmp/src/main.cpp
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/openmp/src/pdensity.cpp
 stdio.h
 -
 opencv2/opencv.hpp
@@ -30,16 +26,6 @@ opencv2/imgproc/imgproc.hpp
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
--
-../include/pdensity.h
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/openmp/src/../include/pdensity.h
-../include/segmentation.h
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/openmp/src/../include/segmentation.h
-set
--
-iostream
--
-unistd.h
 -
 omp.h
 -
