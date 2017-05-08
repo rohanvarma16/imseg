@@ -121,7 +121,7 @@ int num_pts = img.cols * img.rows;
 
 
 
-  void constructSegmentedImg(cv::Mat& img,cv::Mat& img_seg,std::vector<int>& parents){
+  void constructSegmentedImg(cv::Mat& img,cv::Mat& img_seg, int *parents){
 
     std::vector<int> clusterids;
     int num_pixels = img.rows * img.cols;

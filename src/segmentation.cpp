@@ -212,7 +212,7 @@ int num_pts = img.cols * img.rows;
 
 
   
-int distinct_abs(const vector<int>& v)
+/*int distinct_abs(const vector<int>& v)
 {
    std::set<int> distinct_container;
 
@@ -228,7 +228,7 @@ int distinct_abs(const vector<int>& v)
    }
 
    return distinct_container.size();
-}
+}*/
 
 
 

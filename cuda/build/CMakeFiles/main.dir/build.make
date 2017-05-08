@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda
+CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build
+CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/main.cpp.o: ../src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/src/main.cpp.o"
-	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/main.cpp.o -c /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/main.cpp
+	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/main.cpp.o -c /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/main.cpp
 
 CMakeFiles/main.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/main.cpp.i"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
 
 CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
 CMakeFiles/main.dir/src/main.cpp.o.requires:
 .PHONY : CMakeFiles/main.dir/src/main.cpp.o.requires
@@ -77,17 +77,17 @@ CMakeFiles/main.dir/src/main.cpp.o.provides.build: CMakeFiles/main.dir/src/main.
 
 CMakeFiles/main.dir/src/segmentation.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/segmentation.cpp.o: ../src/segmentation.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/src/segmentation.cpp.o"
-	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/segmentation.cpp.o -c /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/segmentation.cpp
+	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/segmentation.cpp.o -c /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/segmentation.cpp
 
 CMakeFiles/main.dir/src/segmentation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/segmentation.cpp.i"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/segmentation.cpp > CMakeFiles/main.dir/src/segmentation.cpp.i
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/segmentation.cpp > CMakeFiles/main.dir/src/segmentation.cpp.i
 
 CMakeFiles/main.dir/src/segmentation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/segmentation.cpp.s"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/segmentation.cpp -o CMakeFiles/main.dir/src/segmentation.cpp.s
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/segmentation.cpp -o CMakeFiles/main.dir/src/segmentation.cpp.s
 
 CMakeFiles/main.dir/src/segmentation.cpp.o.requires:
 .PHONY : CMakeFiles/main.dir/src/segmentation.cpp.o.requires
@@ -100,17 +100,17 @@ CMakeFiles/main.dir/src/segmentation.cpp.o.provides.build: CMakeFiles/main.dir/s
 
 CMakeFiles/main.dir/src/pdensity.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/pdensity.cpp.o: ../src/pdensity.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/src/pdensity.cpp.o"
-	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/pdensity.cpp.o -c /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/pdensity.cpp
+	/usr/lib64/ccache/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/pdensity.cpp.o -c /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/pdensity.cpp
 
 CMakeFiles/main.dir/src/pdensity.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/pdensity.cpp.i"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/pdensity.cpp > CMakeFiles/main.dir/src/pdensity.cpp.i
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/pdensity.cpp > CMakeFiles/main.dir/src/pdensity.cpp.i
 
 CMakeFiles/main.dir/src/pdensity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/pdensity.cpp.s"
-	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/pdensity.cpp -o CMakeFiles/main.dir/src/pdensity.cpp.s
+	/usr/lib64/ccache/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/pdensity.cpp -o CMakeFiles/main.dir/src/pdensity.cpp.s
 
 CMakeFiles/main.dir/src/pdensity.cpp.o.requires:
 .PHONY : CMakeFiles/main.dir/src/pdensity.cpp.o.requires
@@ -135,7 +135,7 @@ main: CMakeFiles/main.dir/src/segmentation.cpp.o
 main: CMakeFiles/main.dir/src/pdensity.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: libcuda_methods_lib.a
-main: /usr/local/cuda/lib64/libcudart.so
+main: /usr/local/depot/cuda-8.0/lib64/libcudart.so
 main: /afs/cs/academic/class/15418-s17/public/sw/opencv/build/lib/libopencv_calib3d.so.3.2.0
 main: /afs/cs/academic/class/15418-s17/public/sw/opencv/build/lib/libopencv_core.so.3.2.0
 main: /afs/cs/academic/class/15418-s17/public/sw/opencv/build/lib/libopencv_cudaarithm.so.3.2.0
@@ -235,6 +235,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build /afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build /afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/main.dir/depend
 

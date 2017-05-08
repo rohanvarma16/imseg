@@ -4,20 +4,20 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/main.cpp" "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles/main.dir/src/main.cpp.o"
-  "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/pdensity.cpp" "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles/main.dir/src/pdensity.cpp.o"
-  "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/segmentation.cpp" "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles/main.dir/src/segmentation.cpp.o"
+  "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/main.cpp" "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles/main.dir/src/main.cpp.o"
+  "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/pdensity.cpp" "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles/main.dir/src/pdensity.cpp.o"
+  "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/segmentation.cpp" "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles/main.dir/src/segmentation.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/build/CMakeFiles/cuda_methods_lib.dir/DependInfo.cmake"
+  "/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/build/CMakeFiles/cuda_methods_lib.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/cuda/include"
+  "/usr/local/depot/cuda-8.0/include"
   "/afs/cs/academic/class/15418-s17/public/sw/opencv/build"
   "/afs/cs/academic/class/15418-s17/public/sw/opencv/include"
   "/afs/cs/academic/class/15418-s17/public/sw/opencv/include/opencv"

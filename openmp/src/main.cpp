@@ -74,6 +74,7 @@ int main(int argc, char** argv )
 
   double readTime = 0.f;
   double pdensityTime = 0.f;
+  double segmentTreeTime = 0.f;
   double segmentTime = 0.f;
   double writeTime = 0.f;
   double totalTime = 0.f;
@@ -110,6 +111,8 @@ int main(int argc, char** argv )
   segmentTree(img, parents, distances, pdensity, tau);
   printf("found parents\n");
 
+  double endSegmentTreeTime = CycleTimer::currentSeconds();
+
   constructSegments(img,parents,distances);
   printf("constructed segments, ");
   //printf("num_segments: %d \n", distinct_abs(parents));
@@ -125,13 +128,15 @@ int main(int argc, char** argv )
 
   readTime = 1000.f * (endReadTime - startTime);  
   pdensityTime = 1000.f * (endPdensityTime - endReadTime);
-  segmentTime = 1000.f * (endSegmentTime - endPdensityTime);
+  segmentTreeTime = 1000.f * (endSegmentTreeTime - endPdensityTime);
+  segmentTime = 1000.f * (endSegmentTime - endSegmentTreeTime);
   writeTime = 1000.f * (endWriteTime - endSegmentTime);
   totalTime = 1000.f * (endWriteTime - startTime);
  
   printf("Time for reading input image file:      %.4f ms\n", readTime);
   printf("Time for calculating point densities:   %.4f ms\n", pdensityTime);
-  printf("Time for segmenting the image:          %.4f ms\n", segmentTime);
+  printf("Time for constructing segment tree:     %.4f ms\n", segmentTreeTime);
+  printf("Time for constructing segments:         %.4f ms\n", segmentTime);
   printf("Time for writing the output image:      %.4f ms\n", writeTime);
   printf("Overall time:                           %.4f ms\n", totalTime);
 

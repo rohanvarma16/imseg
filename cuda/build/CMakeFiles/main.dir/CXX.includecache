@@ -6,13 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/cuda_methods.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/cuda_methods.h
 
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/pdensity.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/cycleTimer.h
+sys/sysctl.h
+-
+mach/mach.h
+-
+mach/mach_time.h
+-
+stdio.h
+-
+stdlib.h
+-
+windows.h
+-
+time.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+sys/time.h
+-
 
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/segmentation.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/pdensity.h
 
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/main.cpp
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/segmentation.h
+
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/main.cpp
 stdio.h
 -
 opencv2/opencv.hpp
@@ -34,17 +58,19 @@ opencv2/core/core.hpp
 opencv2/highgui/highgui.hpp
 -
 ../include/pdensity.h
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/pdensity.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/pdensity.h
 ../include/segmentation.h
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/segmentation.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/segmentation.h
 ../include/cuda_methods.h
-/afs/andrew.cmu.edu/usr18/rohanv/workspace/18645/imseg/cuda/src/../include/cuda_methods.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/cuda_methods.h
 set
 -
 iostream
 -
 unistd.h
 -
+../include/cycleTimer.h
+/afs/andrew.cmu.edu/usr18/ardras/private/15-618/imseg/cuda/src/../include/cycleTimer.h
 
 /afs/cs/academic/class/15418-s17/public/sw/opencv/build/cv_cpu_config.h
 
